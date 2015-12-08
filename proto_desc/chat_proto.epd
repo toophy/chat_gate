@@ -1,0 +1,62 @@
+
+-- 引用文件
+include chat_proto_stream github.com/toophy/toogo
+
+-- 登录聊天服务器
+id 1
+message C2G_login {
+	Account string	帐号
+	Time	int32	登录时间戳
+	Sign 	string  验证码
+}
+
+-- 响应登录
+id 2
+message G2C_login_ret {
+	Ret     int8    登录结果,0:成功,其他为失败原因
+	Msg     string  登录失败描述
+}
+
+-- 创建角色
+id 3
+message C2G_createRole {
+	Name string 角色名
+	Sex  int8   性别 0:女, 1:男
+}
+
+-- 响应创建角色
+id 4
+message G2C_createRole_ret {
+	Ret     int8    创建角色结果, 0:成功,其他为失败原因
+	Msg     string  创建角色失败描述
+}
+
+-- 发送聊天信息
+id 5
+message C2S_chat {
+	Channel int32   频道
+	Data    string  聊天信息
+}
+
+-- 发送私聊信息
+id 6
+message C2C_chat_private {
+	Target  string  聊天目标
+	Data    string  聊天信息
+}
+
+-- 返回聊天信息
+id 7
+message S2C_chat {
+	Channel int32   频道
+	Source  string  发言人
+	Data    string  聊天信息
+}
+
+-- 返回私人聊天信息
+id 8
+message S2C_chat_private {
+	Source  string  发言人
+	Target  string  倾听者
+	Data    string  聊天信息
+}
