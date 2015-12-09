@@ -81,6 +81,7 @@ func (this *MasterThread) On_packetError(sessionId uint64) {
 func (this *MasterThread) On_registNetMsg() {
 	this.RegistNetMsg(proto.C2G_login_Id, this.on_c2g_login)
 	this.RegistNetMsg(proto.C2S_chat_Id, this.on_c2s_chat)
+	this.RegistNetMsg(proto.S2G_more_packet_Id, this.on_s2g_more_packet)
 }
 
 func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint64) bool {
@@ -89,12 +90,15 @@ func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint6
 
 	p := toogo.NewPacket(64)
 
-	msgLoginRet := new(proto.G2C_login_ret)
-	msgLoginRet.Ret = 0
-	msgLoginRet.Msg = "ok"
-	msgLoginRet.Write(p)
+	if p != nil {
+		msgLoginRet := new(proto.G2C_login_ret)
+		msgLoginRet.Ret = 0
+		msgLoginRet.Msg = "ok"
+		msgLoginRet.Write(p)
 
-	toogo.SendPacket(p, sessionId)
+		toogo.SendPacket(p, sessionId)
+	}
+
 	return true
 }
 
@@ -104,6 +108,21 @@ func (this *MasterThread) on_c2s_chat(pack *toogo.PacketReader, sessionId uint64
 
 	this.LogInfo("Say : %s", msg.Data)
 	// 封包一层
+
+	return true
+}
+
+func (this *MasterThread) on_s2g_more_packet(pack *toogo.PacketReader, sessionId uint64) bool {
+	defer toogo.RecoverRead(proto.S2G_more_packet_Id)
+
+	// 整包, 多少个消息? 还是一个消息
+	// 消息长度, 去掉消息头, 消息总长度
+	subPackCount := pack.ReadUint16()
+	for i := 0; i < subPackCount; i++ {
+		if !this.ProcSubNetPacket(pack, sessionId, proto.S2G_more_packet_Id) {
+			return false
+		}
+	}
 
 	return true
 }

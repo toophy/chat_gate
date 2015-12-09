@@ -60,3 +60,13 @@ message S2C_chat_private {
 	Target  string  倾听者
 	Data    string  聊天信息
 }
+
+-- Server发送给Gate消息包
+id 9
+message S2G_more_packet {
+}
+
+-- Gate发送给GServer消息包
+id 10
+message G2S_more_packet {
+}

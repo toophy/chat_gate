@@ -179,6 +179,27 @@ func (t *G2C_login_ret) Write(p *PacketWriter) bool {
 	return true
 }
 
+// Gate发送给GServer消息包
+const G2S_more_packet_Id = 10
+
+type G2S_more_packet struct {
+}
+
+func (t *G2S_more_packet) Read(p *PacketReader) bool {
+	defer RecoverRead(G2S_more_packet_Id)
+
+	return true
+}
+
+func (t *G2S_more_packet) Write(p *PacketWriter) bool {
+	defer RecoverWrite(G2S_more_packet_Id)
+
+	p.WriteMsgId(G2S_more_packet_Id)
+	p.WriteMsgOver()
+
+	return true
+}
+
 // 返回聊天信息
 const S2C_chat_Id = 7
 
@@ -236,6 +257,27 @@ func (t *S2C_chat_private) Write(p *PacketWriter) bool {
 	p.WriteString(&t.Source)
 	p.WriteString(&t.Target)
 	p.WriteString(&t.Data)
+	p.WriteMsgOver()
+
+	return true
+}
+
+// Server发送给Gate消息包
+const S2G_more_packet_Id = 9
+
+type S2G_more_packet struct {
+}
+
+func (t *S2G_more_packet) Read(p *PacketReader) bool {
+	defer RecoverRead(S2G_more_packet_Id)
+
+	return true
+}
+
+func (t *S2G_more_packet) Write(p *PacketWriter) bool {
+	defer RecoverWrite(S2G_more_packet_Id)
+
+	p.WriteMsgId(S2G_more_packet_Id)
 	p.WriteMsgOver()
 
 	return true
