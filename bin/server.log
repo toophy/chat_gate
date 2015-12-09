@@ -1751,3 +1751,47 @@
 10:47:49 [D] 1 Conn[2] : Accept ok
 10:47:49 [I] 1 on_c2g_login
 10:47:49 [I] 1 Say : 你好,世界!
+10:59:52 [I] 0 accept ok
+10:59:52 [D] 1 Conn[3] : Accept ok
+10:59:55 [E] 1 Conn[3] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:23483: wsarecv: An existing connection was forcibly closed by the remote host.]
+10:59:55 [D] 1 Conn[3] : Connect pre close
+10:59:55 [D] 1 Conn[3] : Connect close ok.
+11:09:10 [D] 1           服务器{chat_svr}启动
+11:09:10 [I] 0 listen ok
+11:09:10 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9998) ok.
+11:09:10 [I] 0 listen ok
+11:09:10 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9998) ok.
+11:09:15 [I] 0 accept ok
+11:09:16 [D] 1 Conn[2] : Accept ok
+11:09:16 [I] 1 Say : 你好,世界!
+13:26:47 [D] 1           服务器{chat_svr}启动
+13:27:34 [D] 1           服务器{chat_svr}启动
+13:27:35 [I] 0 listen ok
+13:27:35 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+13:27:35 [I] 0 listen ok
+13:27:35 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+13:27:43 [I] 0 accept ok
+13:27:43 [D] 1 Conn[2] : Accept ok
+13:27:43 [I] 1 Say : 你好,世界!
+13:27:47 [I] 0 accept ok
+13:27:47 [D] 1 Conn[3] : Accept ok
+15:39:42 [D] 1           服务器{chat_svr}启动
+15:39:42 [I] 0 listen ok
+15:39:42 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+15:39:42 [I] 0 listen ok
+15:39:42 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+15:40:21 [D] 1           服务器{chat_svr}启动
+15:40:21 [I] 0 listen ok
+15:40:21 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+15:40:21 [I] 0 listen ok
+15:40:21 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+15:40:42 [D] 1           服务器{chat_gate}启动
+15:40:42 [I] 0 listen ok
+15:40:42 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9998) ok.
+15:40:42 [I] 0 listen ok
+15:40:42 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9998) ok.
+15:40:53 [I] 0 accept ok
+15:40:53 [D] 1 Conn[2] : Accept ok
+15:40:53 [I] 1 Say : 你好,世界!
+15:40:58 [I] 0 accept ok
+15:40:58 [D] 1 Conn[3] : Accept ok
