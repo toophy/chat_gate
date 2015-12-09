@@ -91,6 +91,8 @@ func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint3
 	d := make([]byte, 64)
 	p.InitWriter(d)
 
+	this.LogInfo("on_c2g_login")
+
 	msgLoginRet := new(proto.G2C_login_ret)
 	msgLoginRet.Ret = 0
 	msgLoginRet.Msg = "ok"
