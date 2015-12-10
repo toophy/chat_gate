@@ -6,6 +6,11 @@ import (
 	"github.com/toophy/toogo"
 )
 
+// ScreenSvr
+type ScreenSvr struct {
+	Skey uint16
+}
+
 // 主线程
 type MasterThread struct {
 	toogo.Thread
@@ -88,7 +93,7 @@ func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint6
 	msg := proto.C2G_login{}
 	msg.Read(pack)
 
-	p := toogo.NewPacket(64)
+	p := toogo.NewPacket(64, sessionId)
 
 	if p != nil {
 		msgLoginRet := new(proto.G2C_login_ret)
@@ -96,7 +101,7 @@ func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint6
 		msgLoginRet.Msg = "ok"
 		msgLoginRet.Write(p)
 
-		toogo.SendPacket(p, sessionId)
+		toogo.SendPacket(p)
 	}
 
 	return true
@@ -109,6 +114,27 @@ func (this *MasterThread) on_c2s_chat(pack *toogo.PacketReader, sessionId uint64
 	this.LogInfo("Say : %s", msg.Data)
 	// 封包一层
 
+	// pM := toogo.NewPacket(256, m.SessionId)
+	// if pM != nil {
+	// 	// defer RecoverWrite(S2G_more_packet_Id)
+	// 	pM.WriteMsgId(proto.S2G_more_packet_Id)
+
+	// 	pC := toogo.NewPacket(128, m.SessionId)
+	// 	if pC != nil {
+	// 		msgChat := new(proto.C2S_chat)
+	// 		msgChat.Channel = 1
+	// 		msgChat.Data = "我是OKOK"
+	// 		msgChat.Write(pC)
+	// 		pC.PacketWriteOver()
+
+	// 		pM.WriteUint16(1)
+	// 		pM.WriteDataEx(pC.GetData(), pC.GetPos())
+	// 		pM.WriteMsgOver()
+
+	// 		toogo.SendPacket(pM)
+	// 	}
+	// }
+
 	return true
 }
 
@@ -118,7 +144,7 @@ func (this *MasterThread) on_s2g_more_packet(pack *toogo.PacketReader, sessionId
 	// 整包, 多少个消息? 还是一个消息
 	// 消息长度, 去掉消息头, 消息总长度
 	subPackCount := pack.ReadUint16()
-	for i := 0; i < subPackCount; i++ {
+	for i := uint16(0); i < subPackCount; i++ {
 		if !this.ProcSubNetPacket(pack, sessionId, proto.S2G_more_packet_Id) {
 			return false
 		}
