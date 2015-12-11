@@ -4,20 +4,20 @@ import (
 	"fmt"
 	"github.com/toophy/chat_gate/proto"
 	"github.com/toophy/toogo"
+	"sync"
 )
-
-// ScreenSvr
-type ScreenSvr struct {
-	Skey uint16
-}
 
 // 主线程
 type MasterThread struct {
 	toogo.Thread
+
+	ChatSvrsLock sync.RWMutex
+	ChatSvrs     map[uint64]*toogo.Session
 }
 
 // 首次运行
 func (this *MasterThread) On_firstRun() {
+	this.ChatSvrs = make(map[uint64]*toogo.Session, 100)
 }
 
 // 响应线程最先运行
@@ -87,6 +87,7 @@ func (this *MasterThread) On_registNetMsg() {
 	this.RegistNetMsg(proto.C2G_login_Id, this.on_c2g_login)
 	this.RegistNetMsg(proto.C2S_chat_Id, this.on_c2s_chat)
 	this.RegistNetMsg(proto.S2G_more_packet_Id, this.on_s2g_more_packet)
+	this.RegistNetMsg(proto.S2G_registe_Id, this.on_s2g_registe)
 }
 
 func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint64) bool {
@@ -108,32 +109,32 @@ func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint6
 }
 
 func (this *MasterThread) on_c2s_chat(pack *toogo.PacketReader, sessionId uint64) bool {
-	msg := proto.C2S_chat{}
-	msg.Read(pack)
 
-	this.LogInfo("Say : %s", msg.Data)
 	// 封包一层
+	targetSession := this.GetSession(1)
+	if targetSession != nil {
 
-	// pM := toogo.NewPacket(256, m.SessionId)
-	// if pM != nil {
-	// 	// defer RecoverWrite(S2G_more_packet_Id)
-	// 	pM.WriteMsgId(proto.S2G_more_packet_Id)
+		pM := toogo.NewPacket(256, targetSession.SessionId)
+		if pM != nil {
+			// defer RecoverWrite(G2S_more_packet_Id)
+			pM.WriteMsgId(proto.G2S_more_packet_Id)
 
-	// 	pC := toogo.NewPacket(128, m.SessionId)
-	// 	if pC != nil {
-	// 		msgChat := new(proto.C2S_chat)
-	// 		msgChat.Channel = 1
-	// 		msgChat.Data = "我是OKOK"
-	// 		msgChat.Write(pC)
-	// 		pC.PacketWriteOver()
+			pC := toogo.NewPacket(128, targetSession.SessionId)
+			if pC != nil {
+				_, msg_len, start_pos := pack.GetReadMsg()
 
-	// 		pM.WriteUint16(1)
-	// 		pM.WriteDataEx(pC.GetData(), pC.GetPos())
-	// 		pM.WriteMsgOver()
+				fmt.Println(pack.GetData()[start_pos : start_pos+uint64(msg_len)])
+				pC.CopyMsg(pack.GetData()[start_pos:start_pos+uint64(msg_len)], uint64(msg_len))
+				pC.PacketWriteOver()
 
-	// 		toogo.SendPacket(pM)
-	// 	}
-	// }
+				pM.WriteUint16(1)
+				pM.WriteDataEx(pC.GetData(), pC.GetPos())
+				pM.WriteMsgOver()
+
+				toogo.SendPacket(pM)
+			}
+		}
+	}
 
 	return true
 }
@@ -151,6 +152,29 @@ func (this *MasterThread) on_s2g_more_packet(pack *toogo.PacketReader, sessionId
 	}
 
 	return true
+}
+
+func (this *MasterThread) on_s2g_registe(pack *toogo.PacketReader, sessionId uint64) bool {
+	msg := proto.S2G_registe{}
+	msg.Read(pack)
+
+	this.ChatSvrsLock.Lock()
+	defer this.ChatSvrsLock.Unlock()
+
+	this.ChatSvrs[msg.Sid] = toogo.GetSessionById(sessionId)
+
+	return true
+}
+
+func (this *MasterThread) GetSession(sid uint64) *toogo.Session {
+	this.ChatSvrsLock.RLock()
+	defer this.ChatSvrsLock.RUnlock()
+
+	if v, ok := this.ChatSvrs[sid]; ok {
+		return v
+	}
+
+	return nil
 }
 
 func main() {

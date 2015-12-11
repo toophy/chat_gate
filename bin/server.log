@@ -1924,3 +1924,200 @@
 11:07:52 [D] 1 Conn[2] : Accept ok
 11:07:52 [I] 1 packLen=25,msgCount=1
 11:07:52 [I] 1 Say : 我是OKOK
+14:13:28 [D] 1           服务器{chat_gate}启动
+14:13:28 [I] 0 listen ok
+14:13:28 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+14:13:28 [I] 0 listen ok
+14:13:28 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+14:14:33 [D] 1           服务器{chat_gate}启动
+14:14:33 [I] 0 listen ok
+14:14:34 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+14:14:33 [I] 0 listen ok
+14:14:34 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+14:14:40 [I] 0 accept ok
+14:14:40 [D] 1 Conn[2] : Accept ok
+14:14:53 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9998->127.0.0.1:13224: wsarecv: An existing connection was forcibly closed by the remote host.]
+14:14:53 [D] 1 Conn[2] : Connect pre close
+14:14:53 [D] 1 Conn[2] : Connect close ok.
+14:15:00 [I] 0 accept ok
+14:15:00 [D] 1 Conn[3] : Accept ok
+14:16:58 [D] 1           服务器{chat_gate}启动
+14:16:58 [I] 0 listen ok
+14:16:58 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+14:16:58 [I] 0 listen ok
+14:16:58 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+14:17:06 [I] 0 accept ok
+14:17:06 [D] 1 Conn[2] : Accept ok
+14:18:34 [D] 1           服务器{chat_gate}启动
+14:18:34 [I] 0 listen ok
+14:18:34 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+14:18:34 [I] 0 listen ok
+14:18:34 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+14:18:42 [I] 0 accept ok
+14:18:42 [D] 1 Conn[2] : Accept ok
+14:19:18 [D] 1           服务器{chat_gate}启动
+14:19:18 [I] 0 listen ok
+14:19:18 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9998) ok.
+14:19:18 [I] 0 listen ok
+14:19:18 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9998) ok.
+14:19:26 [I] 0 accept ok
+14:19:26 [D] 1 Conn[2] : Accept ok
+14:21:08 [D] 1           服务器{chat_gate}启动
+14:21:08 [I] 0 listen ok
+14:21:08 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+14:21:08 [I] 0 listen ok
+14:21:08 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+14:21:14 [I] 0 accept ok
+14:21:15 [D] 1 Conn[2] : Accept ok
+14:21:19 [I] 0 accept ok
+14:21:19 [D] 1 Conn[3] : Accept ok
+14:21:19 [E] 1 Conn[2] : Connect read[EOF]
+14:21:19 [D] 1 Conn[2] : Connect pre close
+14:21:19 [D] 1 Conn[2] : Connect close ok.
+14:30:01 [D] 1           服务器{chat_gate}启动
+14:30:01 [I] 0 listen ok
+14:30:01 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+14:30:01 [I] 0 listen ok
+14:30:01 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+14:32:39 [D] 1           服务器{chat_gate}启动
+14:32:39 [I] 0 listen ok
+14:32:39 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+14:32:39 [I] 0 listen ok
+14:32:39 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+14:32:56 [I] 0 accept ok
+14:32:56 [D] 1 Conn[2] : Accept ok
+14:33:27 [I] 0 accept ok
+14:33:27 [D] 1 Conn[3] : Accept ok
+14:33:27 [E] 1 Conn[2] : Connect read[EOF]
+14:33:27 [D] 1 Conn[2] : Connect pre close
+14:33:27 [D] 1 Conn[2] : Connect close ok.
+14:34:15 [D] 1           服务器{chat_gate}启动
+14:35:14 [D] 1           服务器{chat_gate}启动
+14:35:14 [I] 0 listen ok
+14:35:14 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+14:35:14 [I] 0 listen ok
+14:35:14 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+14:35:25 [I] 0 accept ok
+14:35:25 [D] 1 Conn[2] : Accept ok
+14:35:29 [I] 0 accept ok
+14:35:29 [D] 1 Conn[3] : Accept ok
+14:35:29 [E] 1 Conn[2] : Connect read[EOF]
+14:35:29 [D] 1 Conn[2] : Connect pre close
+14:35:29 [D] 1 Conn[2] : Connect close ok.
+15:04:27 [D] 1           服务器{chat_gate}启动
+15:04:27 [I] 0 listen ok
+15:04:27 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+15:04:27 [I] 0 listen ok
+15:04:27 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+15:04:32 [I] 0 accept ok
+15:04:32 [D] 1 Conn[2] : Accept ok
+15:04:36 [I] 0 accept ok
+15:04:36 [D] 1 Conn[3] : Accept ok
+15:04:36 [E] 1 Conn[2] : Connect read[EOF]
+15:04:36 [D] 1 Conn[2] : Connect pre close
+15:04:36 [D] 1 Conn[2] : Connect close ok.
+15:05:51 [D] 1           服务器{chat_gate}启动
+15:05:51 [I] 0 listen ok
+15:05:51 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+15:05:51 [I] 0 listen ok
+15:05:51 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+15:05:54 [I] 0 accept ok
+15:05:54 [D] 1 Conn[2] : Accept ok
+15:05:58 [I] 0 accept ok
+15:05:58 [D] 1 Conn[3] : Accept ok
+15:05:59 [E] 1 Conn[2] : Connect read[EOF]
+15:05:59 [D] 1 Conn[2] : Connect pre close
+15:05:59 [D] 1 Conn[2] : Connect close ok.
+15:41:00 [D] 1           服务器{chat_gate}启动
+15:41:00 [I] 0 listen ok
+15:41:00 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+15:41:00 [I] 0 listen ok
+15:41:00 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+15:41:05 [I] 0 accept ok
+15:41:05 [D] 1 Conn[2] : Accept ok
+15:41:11 [I] 0 accept ok
+15:41:11 [D] 1 Conn[3] : Accept ok
+15:41:11 [E] 1 Conn[2] : Connect read[EOF]
+15:41:11 [D] 1 Conn[2] : Connect pre close
+15:41:11 [D] 1 Conn[2] : Connect close ok.
+15:43:05 [D] 1           服务器{chat_gate}启动
+15:43:05 [I] 0 listen ok
+15:43:05 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+15:43:05 [I] 0 listen ok
+15:43:05 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+15:43:09 [I] 0 accept ok
+15:43:09 [D] 1 Conn[2] : Accept ok
+15:43:12 [I] 0 accept ok
+15:43:12 [D] 1 Conn[3] : Accept ok
+15:43:12 [E] 1 Conn[2] : Connect read[EOF]
+15:43:12 [D] 1 Conn[2] : Connect pre close
+15:43:12 [D] 1 Conn[2] : Connect close ok.
+15:45:36 [D] 1           服务器{chat_gate}启动
+15:45:36 [I] 0 listen ok
+15:45:36 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9998) ok.
+15:45:36 [I] 0 listen ok
+15:45:36 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9998) ok.
+15:45:40 [I] 0 accept ok
+15:45:40 [D] 1 Conn[2] : Accept ok
+15:45:44 [I] 0 accept ok
+15:45:44 [D] 1 Conn[3] : Accept ok
+15:45:45 [E] 1 Conn[2] : Connect read[EOF]
+15:45:45 [D] 1 Conn[2] : Connect pre close
+15:45:45 [D] 1 Conn[2] : Connect close ok.
+15:53:09 [D] 1           服务器{chat_gate}启动
+15:53:09 [I] 0 listen ok
+15:53:09 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+15:53:09 [I] 0 listen ok
+15:53:09 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+15:53:11 [I] 0 accept ok
+15:53:12 [D] 1 Conn[2] : Accept ok
+15:53:15 [I] 0 accept ok
+15:53:15 [D] 1 Conn[3] : Accept ok
+15:53:15 [E] 1 Conn[2] : Connect read[EOF]
+15:53:15 [D] 1 Conn[2] : Connect pre close
+15:53:15 [D] 1 Conn[2] : Connect close ok.
+15:54:05 [D] 1           服务器{chat_gate}启动
+15:54:05 [I] 0 listen ok
+15:54:05 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+15:54:05 [I] 0 listen ok
+15:54:05 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+15:54:08 [I] 0 accept ok
+15:54:08 [D] 1 Conn[2] : Accept ok
+15:54:10 [I] 0 accept ok
+15:54:10 [D] 1 Conn[3] : Accept ok
+15:54:10 [E] 1 Conn[2] : Connect read[EOF]
+15:54:10 [D] 1 Conn[2] : Connect pre close
+15:54:10 [D] 1 Conn[2] : Connect close ok.
+15:55:53 [D] 1           服务器{chat_gate}启动
+15:55:53 [I] 0 listen ok
+15:55:53 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+15:55:53 [I] 0 listen ok
+15:55:53 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+15:55:56 [I] 0 accept ok
+15:55:56 [D] 1 Conn[2] : Accept ok
+15:55:58 [I] 0 accept ok
+15:55:58 [D] 1 Conn[3] : Accept ok
+15:55:58 [E] 1 Conn[2] : Connect read[EOF]
+15:55:58 [D] 1 Conn[2] : Connect pre close
+15:55:58 [D] 1 Conn[2] : Connect close ok.
+15:57:03 [D] 1           服务器{chat_gate}启动
+15:57:03 [I] 0 listen ok
+15:57:03 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9998) ok.
+15:57:03 [I] 0 listen ok
+15:57:03 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9998) ok.
+15:57:08 [I] 0 accept ok
+15:57:08 [D] 1 Conn[2] : Accept ok
+15:57:11 [I] 0 accept ok
+15:57:11 [D] 1 Conn[3] : Accept ok
+15:57:12 [E] 1 Conn[2] : Connect read[EOF]
+15:57:12 [D] 1 Conn[2] : Connect pre close
+15:57:12 [D] 1 Conn[2] : Connect close ok.
+16:09:15 [D] 1           服务器{chat_gate}启动
+16:09:15 [I] 0 listen ok
+16:09:15 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+16:09:15 [I] 0 listen ok
+16:09:15 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+16:09:18 [I] 0 accept ok
+16:09:18 [D] 1 Conn[2] : Accept ok
+16:09:20 [I] 0 accept ok
+16:09:20 [D] 1 Conn[3] : Accept ok

@@ -200,6 +200,34 @@ func (t *G2S_more_packet) Write(p *PacketWriter) bool {
 	return true
 }
 
+// Gate向Server返回注册结果
+const G2S_registe_Id = 12
+
+type G2S_registe struct {
+	Ret uint8  // 返回结果,0:成功,其他失败
+	Msg string // 返回失败原因
+}
+
+func (t *G2S_registe) Read(p *PacketReader) bool {
+	defer RecoverRead(G2S_registe_Id)
+
+	t.Ret = p.ReadUint8()
+	t.Msg = p.ReadString()
+
+	return true
+}
+
+func (t *G2S_registe) Write(p *PacketWriter) bool {
+	defer RecoverWrite(G2S_registe_Id)
+
+	p.WriteMsgId(G2S_registe_Id)
+	p.WriteUint8(t.Ret)
+	p.WriteString(&t.Msg)
+	p.WriteMsgOver()
+
+	return true
+}
+
 // 返回聊天信息
 const S2C_chat_Id = 7
 
@@ -278,6 +306,31 @@ func (t *S2G_more_packet) Write(p *PacketWriter) bool {
 	defer RecoverWrite(S2G_more_packet_Id)
 
 	p.WriteMsgId(S2G_more_packet_Id)
+	p.WriteMsgOver()
+
+	return true
+}
+
+// Server向Gate注册
+const S2G_registe_Id = 11
+
+type S2G_registe struct {
+	Sid uint64 // 小区编号
+}
+
+func (t *S2G_registe) Read(p *PacketReader) bool {
+	defer RecoverRead(S2G_registe_Id)
+
+	t.Sid = p.ReadUint64()
+
+	return true
+}
+
+func (t *S2G_registe) Write(p *PacketWriter) bool {
+	defer RecoverWrite(S2G_registe_Id)
+
+	p.WriteMsgId(S2G_registe_Id)
+	p.WriteUint64(t.Sid)
 	p.WriteMsgOver()
 
 	return true

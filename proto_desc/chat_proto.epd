@@ -70,3 +70,16 @@ message S2G_more_packet {
 id 10
 message G2S_more_packet {
 }
+
+-- Server向Gate注册
+id 11
+message S2G_registe {
+	Sid uint64    小区编号
+}
+
+-- Gate向Server返回注册结果
+id 12
+message G2S_registe {
+	Ret uint8     返回结果,0:成功,其他失败
+	Msg string    返回失败原因
+}
