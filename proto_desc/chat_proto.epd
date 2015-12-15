@@ -2,8 +2,12 @@
 -- 引用文件
 include chat_proto_stream github.com/toophy/toogo
 
+-- 本文件消息Id起步值, 消息Id依次分配, 调整消息顺序会造成消息Id变更
+-- 尽量追加消息到文件结尾, 而不是插入消息, 也不要删除消息, 可以在
+-- 需要删除的消息, 要留下 message {} 空壳, 占用Id
+start_id 1
+
 -- 登录聊天服务器
-id 1
 message C2G_login {
 	Account string	帐号
 	Time	int32	登录时间戳
@@ -11,42 +15,36 @@ message C2G_login {
 }
 
 -- 响应登录
-id 2
 message G2C_login_ret {
 	Ret     int8    登录结果,0:成功,其他为失败原因
 	Msg     string  登录失败描述
 }
 
 -- 创建角色
-id 3
 message C2G_createRole {
 	Name string 角色名
 	Sex  int8   性别 0:女, 1:男
 }
 
 -- 响应创建角色
-id 4
 message G2C_createRole_ret {
 	Ret     int8    创建角色结果, 0:成功,其他为失败原因
 	Msg     string  创建角色失败描述
 }
 
 -- 发送聊天信息
-id 5
 message C2S_chat {
 	Channel int32   频道
 	Data    string  聊天信息
 }
 
 -- 发送私聊信息
-id 6
 message C2C_chat_private {
 	Target  string  聊天目标
 	Data    string  聊天信息
 }
 
 -- 返回聊天信息
-id 7
 message S2C_chat {
 	Channel int32   频道
 	Source  string  发言人
@@ -54,7 +52,6 @@ message S2C_chat {
 }
 
 -- 返回私人聊天信息
-id 8
 message S2C_chat_private {
 	Source  string  发言人
 	Target  string  倾听者
@@ -62,23 +59,19 @@ message S2C_chat_private {
 }
 
 -- Server发送给Gate消息包
-id 9
 message S2G_more_packet {
 }
 
 -- Gate发送给GServer消息包
-id 10
 message G2S_more_packet {
 }
 
 -- Server向Gate注册
-id 11
 message S2G_registe {
 	Sid uint64    小区编号
 }
 
 -- Gate向Server返回注册结果
-id 12
 message G2S_registe {
 	Ret uint8     返回结果,0:成功,其他失败
 	Msg string    返回失败原因
