@@ -2121,3 +2121,14 @@
 16:09:18 [D] 1 Conn[2] : Accept ok
 16:09:20 [I] 0 accept ok
 16:09:20 [D] 1 Conn[3] : Accept ok
+17:55:32 [E] 1 Conn[3] : Connect read[read tcp 127.0.0.1:9998->127.0.0.1:24239: wsarecv: An existing connection was forcibly closed by the remote host.]
+17:55:32 [D] 1 Conn[3] : Connect pre close
+17:55:32 [D] 1 Conn[3] : Connect close ok.
+14:45:07 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:24229: wsarecv: An existing connection was forcibly closed by the remote host.]
+14:45:07 [D] 1 Conn[2] : Connect pre close
+14:45:07 [D] 1 Conn[2] : Connect close ok.
+15:00:10 [D] 1           服务器{chat_gate}启动
+15:00:10 [I] 0 listen ok
+15:00:10 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9998) ok.
+15:00:10 [I] 0 listen ok
+15:00:10 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9998) ok.

@@ -60,7 +60,7 @@ func MakeRidEx(apid uint64, sid uint64) uint64 {
 }
 
 func (this *MasterThread) AddAccount(name string, pkey string, skey uint64) bool {
-	if len(name) == 0 || len(pkey) == 0 || len(skey) == 0 {
+	if len(name) == 0 || len(pkey) == 0 || skey == 0 {
 		return false
 	}
 
@@ -83,7 +83,7 @@ func (this *MasterThread) AddAccount(name string, pkey string, skey uint64) bool
 	} else {
 
 		rid := MakeRidEx(v.Id, skey)
-		if vr, okr := this.PlatRoleId[rid]; !okr {
+		if _, okr := this.PlatRoleId[rid]; !okr {
 			pr := new(PlatRole)
 			pr.Id = rid
 			pr.Skey = skey
@@ -97,7 +97,7 @@ func (this *MasterThread) AddAccount(name string, pkey string, skey uint64) bool
 }
 
 func (this *MasterThread) GetRole(name string, pkey string, skey uint64) *PlatRole {
-	if len(name) == 0 || len(pkey) == 0 || len(skey) == 0 {
+	if len(name) == 0 || len(pkey) == 0 || skey == 0 {
 		return nil
 	}
 
@@ -121,8 +121,8 @@ func (this *MasterThread) On_firstRun() {
 	this.PlatRoleId = make(map[uint64]*PlatRole, 10)
 	this.LastAccountId = 1
 
-	this.AddAccount("koko", "tyh", "1")
-	this.AddAccount("bububu", "qqzone", "1")
+	this.AddAccount("koko", "tyh", 1)
+	this.AddAccount("bububu", "qqzone", 1)
 }
 
 // 响应线程最先运行
@@ -245,7 +245,7 @@ func (this *MasterThread) on_c2s_chat(pack *toogo.PacketReader, sessionId uint64
 }
 
 func (this *MasterThread) on_s2g_more_packet(pack *toogo.PacketReader, sessionId uint64) bool {
-	defer toogo.RecoverRead(proto.S2G_more_packet_Id)
+	defer toogo.RecoverRead("proto.S2G_more_packet_Id")
 
 	// 整包, 多少个消息? 还是一个消息
 	// 消息长度, 去掉消息头, 消息总长度

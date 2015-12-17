@@ -1,10 +1,28 @@
 
+-- 文件中不得随意空格,尤其是注释
 -- 引用文件
-include chat_proto_stream github.com/toophy/toogo
+include github.com/toophy/toogo
 
--- 本文件消息Id起步值, 消息Id依次分配, 调整消息顺序会造成消息Id变更
--- 尽量追加消息到文件结尾, 而不是插入消息, 也不要删除消息, 可以在
--- 需要删除的消息, 要留下 message {} 空壳, 占用Id
+
+-- 位置数据
+struct TVec3 {
+	X float32 x坐标
+	Y float32 y坐标
+	Z float32 z坐标
+}
+
+-- 怪物数据
+struct MonsterData {
+	Name      string   怪物名
+	CurrPos   TVec3    当前位置
+	TargetPos TVec3    目标位置
+	Speed     float32  速度
+}
+
+
+-- 本文件消息Id起步值,消息Id依次分配,调整消息顺序会造成消息Id变更
+-- 尽量追加消息到文件结尾,而不是插入消息,也不要删除消息,可以在
+-- 需要删除的消息,要留下message{ }空壳,占用Id
 start_id 1
 
 -- 登录聊天服务器
@@ -28,7 +46,7 @@ message C2G_createRole {
 
 -- 响应创建角色
 message G2C_createRole_ret {
-	Ret     int8    创建角色结果, 0:成功,其他为失败原因
+	Ret     int8    创建角色结果,0:成功,其他为失败原因
 	Msg     string  创建角色失败描述
 }
 
@@ -66,6 +84,10 @@ message S2G_more_packet {
 message G2S_more_packet {
 }
 
+-- 占位
+message {
+}
+
 -- Server向Gate注册
 message S2G_registe {
 	Sid uint64    小区编号
@@ -75,4 +97,9 @@ message S2G_registe {
 message G2S_registe {
 	Ret uint8     返回结果,0:成功,其他失败
 	Msg string    返回失败原因
+}
+
+-- Server向Client返回怪物信息
+message S2C_monsterData {
+	Data MonsterData  怪物数据
 }
