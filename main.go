@@ -191,7 +191,6 @@ func (this *MasterThread) On_packetError(sessionId uint64) {
 func (this *MasterThread) On_registNetMsg() {
 	this.RegistNetMsg(proto.C2G_login_Id, this.on_c2g_login)
 	this.RegistNetMsg(proto.C2S_chat_Id, this.on_c2s_chat)
-	this.RegistNetMsg(proto.S2G_more_packet_Id, this.on_s2g_more_packet)
 	this.RegistNetMsg(proto.S2G_registe_Id, this.on_s2g_registe)
 }
 
@@ -238,21 +237,6 @@ func (this *MasterThread) on_c2s_chat(pack *toogo.PacketReader, sessionId uint64
 
 				toogo.SendPacket(pM)
 			}
-		}
-	}
-
-	return true
-}
-
-func (this *MasterThread) on_s2g_more_packet(pack *toogo.PacketReader, sessionId uint64) bool {
-	defer toogo.RecoverRead("proto.S2G_more_packet_Id")
-
-	// 整包, 多少个消息? 还是一个消息
-	// 消息长度, 去掉消息头, 消息总长度
-	subPackCount := pack.ReadUint16()
-	for i := uint16(0); i < subPackCount; i++ {
-		if !this.ProcSubNetPacket(pack, sessionId, proto.S2G_more_packet_Id) {
-			return false
 		}
 	}
 
