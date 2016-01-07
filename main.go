@@ -213,31 +213,15 @@ func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint6
 }
 
 func (this *MasterThread) on_c2s_chat(pack *toogo.PacketReader, sessionId uint64) bool {
+	msg := proto.C2S_chat{}
+	msg.Read(pack)
 
-	// 封包一层
-	targetSession := this.GetSession(1)
-	if targetSession != nil {
+	p := toogo.NewPacket(64, 1)
 
-		pM := toogo.NewPacket(256, targetSession.SessionId)
-		if pM != nil {
-			// defer RecoverWrite(G2S_more_packet_Id)
-			pM.WriteMsgId(proto.G2S_more_packet_Id)
+	if p != nil {
+		msg.Write(p)
 
-			pC := toogo.NewPacket(128, targetSession.SessionId)
-			if pC != nil {
-				_, msg_len, start_pos := pack.GetReadMsg()
-
-				fmt.Println(pack.GetData()[start_pos : start_pos+uint64(msg_len)])
-				pC.CopyMsg(pack.GetData()[start_pos:start_pos+uint64(msg_len)], uint64(msg_len))
-				pC.PacketWriteOver()
-
-				pM.WriteUint16(1)
-				pM.WriteDataEx(pC.GetData(), pC.GetPos())
-				pM.WriteMsgOver()
-
-				toogo.SendPacket(pM)
-			}
-		}
+		toogo.SendPacket(p)
 	}
 
 	return true
