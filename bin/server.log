@@ -41,3 +41,186 @@
 11:08:56 [D] 1 Conn[2] : Connect pre close
 11:08:56 [D] 1 Conn[2] : Connect close ok.
 11:08:56 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:15297: use of closed network connection]
+11:57:35 [I] 0 accept ok
+11:57:35 [D] 1 Conn[3] : Accept ok
+11:57:35 [W] 1 Thread::procS2GNetPacket:读取消息包头失败
+11:57:35 [D] 1 Conn[3] : Connect pre close
+11:57:35 [D] 1 Conn[3] : Connect close ok.
+11:57:35 [E] 1 Conn[3] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:16811: use of closed network connection]
+11:58:21 [I] 0 accept ok
+11:58:21 [D] 1 Conn[4] : Accept ok
+11:58:22 [W] 1 Thread::procS2GNetPacket:SG消息长度无效
+11:58:22 [D] 1 Conn[4] : Connect pre close
+11:58:22 [D] 1 Conn[4] : Connect close ok.
+11:58:22 [E] 1 Conn[4] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:16843: use of closed network connection]
+13:25:26 [D] 1           服务器{chat_gate}启动
+13:25:26 [I] 0 listen ok
+13:25:26 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9998) ok.
+13:25:26 [I] 0 listen ok
+13:25:26 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9998) ok.
+13:25:33 [I] 0 accept ok
+13:25:33 [D] 1 Conn[2] : Accept ok
+13:25:33 [W] 1 Thread::procS2GNetPacket:SG消息长度无效
+13:25:33 [D] 1 Conn[2] : Connect pre close
+13:25:33 [D] 1 Conn[2] : Connect close ok.
+13:25:33 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:19779: use of closed network connection]
+13:27:16 [D] 1           服务器{chat_gate}启动
+13:27:16 [I] 0 listen ok
+13:27:16 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+13:27:16 [I] 0 listen ok
+13:27:16 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+13:27:26 [I] 0 accept ok
+13:27:26 [D] 1 Conn[2] : Accept ok
+13:27:26 [W] 1 Thread::procS2GNetPacket:SG消息长度无效
+13:27:26 [D] 1 Conn[2] : Connect pre close
+13:27:26 [D] 1 Conn[2] : Connect close ok.
+13:27:26 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:19860: use of closed network connection]
+13:29:02 [D] 1           服务器{chat_gate}启动
+13:29:02 [I] 0 listen ok
+13:29:02 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9998) ok.
+13:29:02 [I] 0 listen ok
+13:29:02 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9998) ok.
+13:29:05 [I] 0 accept ok
+13:29:05 [D] 1 Conn[2] : Accept ok
+13:29:05 [W] 1 Thread::procS2GNetPacket:SG消息长度无效
+13:29:05 [D] 1 Conn[2] : Connect pre close
+13:29:05 [D] 1 Conn[2] : Connect close ok.
+13:29:05 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:19940: use of closed network connection]
+13:30:17 [D] 1           服务器{chat_gate}启动
+13:30:17 [I] 0 listen ok
+13:30:17 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9998) ok.
+13:30:17 [I] 0 listen ok
+13:30:17 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9998) ok.
+13:30:19 [I] 0 accept ok
+13:30:19 [D] 1 Conn[2] : Accept ok
+13:30:19 [W] 1 Thread::procS2GNetPacket:SG消息长度无效
+13:30:19 [D] 1 Conn[2] : Connect pre close
+13:30:19 [D] 1 Conn[2] : Connect close ok.
+13:30:19 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:19994: use of closed network connection]
+13:50:35 [D] 1           服务器{chat_gate}启动
+13:50:35 [I] 0 listen ok
+13:50:35 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+13:50:35 [I] 0 listen ok
+13:50:35 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+13:50:39 [I] 0 accept ok
+13:50:39 [D] 1 Conn[2] : Accept ok
+13:50:39 [W] 1 Thread::procS2GNetPacket:SG消息长度无效
+13:50:39 [D] 1 Conn[2] : Connect pre close
+13:50:39 [D] 1 Conn[2] : Connect close ok.
+13:50:39 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:21559: use of closed network connection]
+13:51:46 [D] 1           服务器{chat_gate}启动
+13:51:46 [I] 0 listen ok
+13:51:46 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+13:51:46 [I] 0 listen ok
+13:51:46 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+13:51:50 [I] 0 accept ok
+13:51:50 [D] 1 Conn[2] : Accept ok
+13:51:51 [W] 1 Thread::procS2GNetPacket:SG消息长度无效
+13:51:51 [D] 1 Conn[2] : Connect pre close
+13:51:51 [D] 1 Conn[2] : Connect close ok.
+13:51:51 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:21784: use of closed network connection]
+13:52:55 [D] 1           服务器{chat_gate}启动
+13:52:55 [I] 0 listen ok
+13:52:55 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+13:52:55 [I] 0 listen ok
+13:52:55 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+13:52:57 [I] 0 accept ok
+13:52:57 [D] 1 Conn[2] : Accept ok
+13:52:57 [W] 1 Thread::procS2GNetPacket:SG消息长度无效
+13:52:58 [D] 1 Conn[2] : Connect pre close
+13:52:58 [D] 1 Conn[2] : Connect close ok.
+13:52:58 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:21983: use of closed network connection]
+13:53:57 [D] 1           服务器{chat_gate}启动
+13:53:57 [I] 0 listen ok
+13:53:57 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+13:53:57 [I] 0 listen ok
+13:53:57 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+13:53:59 [I] 0 accept ok
+13:53:59 [D] 1 Conn[2] : Accept ok
+13:53:59 [W] 1 Thread::procS2GNetPacket:SG消息长度无效
+13:53:59 [D] 1 Conn[2] : Connect pre close
+13:53:59 [D] 1 Conn[2] : Connect close ok.
+13:53:59 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:22167: use of closed network connection]
+13:54:19 [D] 1           服务器{chat_gate}启动
+13:54:19 [I] 0 listen ok
+13:54:19 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+13:54:19 [I] 0 listen ok
+13:54:19 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+13:54:23 [I] 0 accept ok
+13:54:23 [D] 1 Conn[2] : Accept ok
+13:54:23 [W] 1 Thread::procS2GNetPacket:SG消息长度无效
+13:54:23 [D] 1 Conn[2] : Connect pre close
+13:54:23 [D] 1 Conn[2] : Connect close ok.
+13:54:23 [E] 1 Conn[2] : Connect read[read tcp 127.0.0.1:9999->127.0.0.1:22240: use of closed network connection]
+14:02:26 [D] 1           服务器{chat_gate}启动
+14:02:26 [I] 0 listen ok
+14:02:27 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+14:02:26 [I] 0 listen ok
+14:02:27 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+14:02:28 [I] 0 accept ok
+14:02:28 [D] 1 Conn[2] : Accept ok
+14:03:07 [I] 0 accept ok
+14:03:07 [D] 1 Conn[3] : Accept ok
+15:53:20 [D] 1           服务器{chat_gate}启动
+15:53:20 [I] 0 listen ok
+15:53:20 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9998) ok.
+15:53:20 [I] 0 listen ok
+15:53:20 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9998) ok.
+15:53:23 [I] 0 accept ok
+15:53:23 [D] 1 Conn[2] : Accept ok
+15:53:31 [I] 0 accept ok
+15:53:31 [D] 1 Conn[3] : Accept ok
+15:55:03 [D] 1           服务器{chat_gate}启动
+15:55:03 [I] 0 listen ok
+15:55:03 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9998) ok.
+15:55:03 [I] 0 listen ok
+15:55:03 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9998) ok.
+15:55:07 [I] 0 accept ok
+15:55:08 [D] 1 Conn[2] : Accept ok
+15:55:11 [I] 0 accept ok
+15:55:11 [D] 1 Conn[3] : Accept ok
+15:55:28 [D] 1           服务器{chat_gate}启动
+15:55:28 [I] 0 listen ok
+15:55:28 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+15:55:28 [I] 0 listen ok
+15:55:28 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+15:55:31 [I] 0 accept ok
+15:55:31 [D] 1 Conn[2] : Accept ok
+15:55:36 [I] 0 accept ok
+15:55:36 [D] 1 Conn[3] : Accept ok
+15:58:08 [D] 1           服务器{chat_gate}启动
+15:58:08 [I] 0 listen ok
+15:58:08 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+15:58:08 [I] 0 listen ok
+15:58:08 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+15:58:10 [I] 0 accept ok
+15:58:10 [D] 1 Conn[2] : Accept ok
+15:58:15 [I] 0 accept ok
+15:58:15 [D] 1 Conn[3] : Accept ok
+16:09:36 [D] 1           服务器{chat_gate}启动
+16:09:36 [I] 0 listen ok
+16:09:36 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+16:09:36 [I] 0 listen ok
+16:09:36 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+16:09:39 [I] 0 accept ok
+16:09:39 [D] 1 Conn[2] : Accept ok
+16:09:42 [I] 0 accept ok
+16:09:42 [D] 1 Conn[3] : Accept ok
+16:11:51 [D] 1           服务器{chat_gate}启动
+16:11:51 [I] 0 listen ok
+16:11:51 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+16:11:51 [I] 0 listen ok
+16:11:51 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+16:11:55 [I] 0 accept ok
+16:11:55 [D] 1 Conn[2] : Accept ok
+16:11:59 [I] 0 accept ok
+16:11:59 [D] 1 Conn[3] : Accept ok
+16:24:16 [D] 1           服务器{chat_gate}启动
+16:24:16 [I] 0 listen ok
+16:24:17 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+16:24:16 [I] 0 listen ok
+16:24:17 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+16:24:18 [I] 0 accept ok
+16:24:18 [D] 1 Conn[2] : Accept ok
+16:24:20 [I] 0 accept ok
+16:24:20 [D] 1 Conn[3] : Accept ok

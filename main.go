@@ -216,12 +216,19 @@ func (this *MasterThread) on_c2s_chat(pack *toogo.PacketReader, sessionId uint64
 	msg := proto.C2S_chat{}
 	msg.Read(pack)
 
-	p := toogo.NewPacket(64, 1)
+	println("on_c2s_chat")
 
-	if p != nil {
-		msg.Write(p)
+	svrSession := this.GetSession(toogo.Tgid_make_Sid(1, 1))
+	if svrSession != nil {
+		p := toogo.NewPacket(64, svrSession.SessionId)
 
-		toogo.SendPacket(p)
+		if p != nil {
+			msg.Write(p)
+			p.Tgid = toogo.Tgid_make_Rid(1, 1, 1)
+
+			println("on_c2s_chat2")
+			toogo.SendPacket(p)
+		}
 	}
 
 	return true
@@ -230,6 +237,8 @@ func (this *MasterThread) on_c2s_chat(pack *toogo.PacketReader, sessionId uint64
 func (this *MasterThread) on_s2g_registe(pack *toogo.PacketReader, sessionId uint64) bool {
 	msg := proto.S2G_registe{}
 	msg.Read(pack)
+
+	toogo.SetSessionTgid(sessionId, msg.Sid)
 
 	this.ChatSvrsLock.Lock()
 	defer this.ChatSvrsLock.Unlock()
