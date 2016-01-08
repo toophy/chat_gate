@@ -123,6 +123,7 @@ func (this *MasterThread) On_firstRun() {
 
 	this.AddAccount("koko", "tyh", 1)
 	this.AddAccount("bububu", "qqzone", 1)
+	this.RegistNetMsgDefault(this.On_defaultNetMsg)
 }
 
 // 响应线程最先运行
@@ -190,8 +191,34 @@ func (this *MasterThread) On_packetError(sessionId uint64) {
 // 注册消息
 func (this *MasterThread) On_registNetMsg() {
 	this.RegistNetMsg(proto.C2G_login_Id, this.on_c2g_login)
-	this.RegistNetMsg(proto.C2S_chat_Id, this.on_c2s_chat)
 	this.RegistNetMsg(proto.S2G_registe_Id, this.on_s2g_registe)
+}
+
+func (this *MasterThread) On_defaultNetMsg(msg_id uint16, pack *toogo.PacketReader, sessionId uint64) bool {
+	// 这里决定怎么转发
+
+	switch msg_id {
+	case proto.C2S_chat_Id:
+		msg := proto.C2S_chat{}
+		msg.Read(pack)
+
+		println("on_c2s_chat")
+
+		svrSession := this.GetSession(toogo.Tgid_make_Sid(1, 1))
+		if svrSession != nil {
+			p := toogo.NewPacket(64, svrSession.SessionId)
+
+			if p != nil {
+				msg.Write(p)
+				p.Tgid = toogo.Tgid_make_Rid(1, 1, 1)
+
+				println("on_c2s_chat2")
+				toogo.SendPacket(p)
+			}
+		}
+	}
+
+	return true
 }
 
 func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint64) bool {
@@ -207,28 +234,6 @@ func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint6
 		msgLoginRet.Write(p)
 
 		toogo.SendPacket(p)
-	}
-
-	return true
-}
-
-func (this *MasterThread) on_c2s_chat(pack *toogo.PacketReader, sessionId uint64) bool {
-	msg := proto.C2S_chat{}
-	msg.Read(pack)
-
-	println("on_c2s_chat")
-
-	svrSession := this.GetSession(toogo.Tgid_make_Sid(1, 1))
-	if svrSession != nil {
-		p := toogo.NewPacket(64, svrSession.SessionId)
-
-		if p != nil {
-			msg.Write(p)
-			p.Tgid = toogo.Tgid_make_Rid(1, 1, 1)
-
-			println("on_c2s_chat2")
-			toogo.SendPacket(p)
-		}
 	}
 
 	return true

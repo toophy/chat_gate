@@ -224,3 +224,25 @@
 16:24:18 [D] 1 Conn[2] : Accept ok
 16:24:20 [I] 0 accept ok
 16:24:20 [D] 1 Conn[3] : Accept ok
+17:53:18 [D] 1           服务器{chat_gate}启动
+17:53:18 [I] 0 listen ok
+17:53:18 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+17:53:18 [I] 0 listen ok
+17:53:18 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+17:53:21 [I] 0 accept ok
+17:53:21 [D] 1 Conn[2] : Accept ok
+17:53:25 [I] 0 accept ok
+17:53:25 [D] 1 Conn[3] : Accept ok
+17:53:25 [W] 1 Thread::procC2GNetPacket:消息没有对应处理函数:5
+17:53:25 [D] 1 Conn[3] : Connect pre close
+17:53:25 [D] 1 Conn[3] : Connect close ok.
+17:53:25 [E] 1 Conn[3] : Connect read[read tcp 127.0.0.1:9998->127.0.0.1:6960: use of closed network connection]
+17:58:11 [D] 1           服务器{chat_gate}启动
+17:58:11 [I] 0 listen ok
+17:58:11 [I] 1 gate_listen_for_s : Listen(0.0.0.0:9999) ok.
+17:58:11 [I] 0 listen ok
+17:58:11 [I] 1 gate_listen_for_c : Listen(0.0.0.0:9999) ok.
+17:58:13 [I] 0 accept ok
+17:58:13 [D] 1 Conn[2] : Accept ok
+17:58:16 [I] 0 accept ok
+17:58:16 [D] 1 Conn[3] : Accept ok
