@@ -202,8 +202,6 @@ func (this *MasterThread) On_defaultNetMsg(msg_id uint16, pack *toogo.PacketRead
 		msg := proto.C2S_chat{}
 		msg.Read(pack)
 
-		println("on_c2s_chat")
-
 		svrSession := this.GetSession(toogo.Tgid_make_Sid(1, 1))
 		if svrSession != nil {
 			p := toogo.NewPacket(64, svrSession.SessionId)
@@ -212,7 +210,6 @@ func (this *MasterThread) On_defaultNetMsg(msg_id uint16, pack *toogo.PacketRead
 				msg.Write(p)
 				p.Tgid = toogo.Tgid_make_Rid(1, 1, 1)
 
-				println("on_c2s_chat2")
 				toogo.SendPacket(p)
 			}
 		}
@@ -226,6 +223,9 @@ func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint6
 	msg.Read(pack)
 
 	p := toogo.NewPacket(64, sessionId)
+
+	toogo.SetSessionTgid(sessionId, toogo.Tgid_make_Rid(1, 1, 1))
+	toogo.SetTgidSession(toogo.Tgid_make_Rid(1, 1, 1), sessionId)
 
 	if p != nil {
 		msgLoginRet := new(proto.G2C_login_ret)
@@ -244,6 +244,7 @@ func (this *MasterThread) on_s2g_registe(pack *toogo.PacketReader, sessionId uin
 	msg.Read(pack)
 
 	toogo.SetSessionTgid(sessionId, msg.Sid)
+	toogo.SetTgidSession(msg.Sid, sessionId)
 
 	this.ChatSvrsLock.Lock()
 	defer this.ChatSvrsLock.Unlock()
