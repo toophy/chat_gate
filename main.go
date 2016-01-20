@@ -197,6 +197,9 @@ func (this *MasterThread) On_registNetMsg() {
 func (this *MasterThread) On_defaultNetMsg(msg_id uint16, pack *toogo.PacketReader, sessionId uint64) bool {
 	// 这里决定怎么转发
 
+	//
+	this.LogInfo("呵呵呵呵-%d", msg_id)
+
 	switch msg_id {
 	case proto.C2S_chat_Id:
 		msg := proto.C2S_chat{}
@@ -204,12 +207,27 @@ func (this *MasterThread) On_defaultNetMsg(msg_id uint16, pack *toogo.PacketRead
 
 		svrSession := this.GetSession(toogo.Tgid_make_Sid(1, 1))
 		if svrSession != nil {
+			this.LogInfo("SessionOk")
 			p := toogo.NewPacket(64, svrSession.SessionId)
 
 			if p != nil {
+				p.SetsubTgid(pack.LinkTgid)
 				msg.Write(p)
-				p.Tgid = toogo.Tgid_make_Rid(1, 1, 1)
+				toogo.SendPacket(p)
+			}
+		}
+	case proto.S2C_chat_Id:
+		old_pos := pack.GetPos()
+		msg := proto.S2C_chat{}
+		msg.Read(pack)
+		dLen := pack.GetPos() - old_pos
 
+		clientSession := this.GetSession(pack.LinkTgid)
+		if clientSession != nil {
+			p := toogo.NewPacket(128, clientSession.SessionId)
+
+			if p != nil {
+				p.CopyFromPacketReader(pack, old_pos, dLen)
 				toogo.SendPacket(p)
 			}
 		}
@@ -242,6 +260,8 @@ func (this *MasterThread) on_c2g_login(pack *toogo.PacketReader, sessionId uint6
 func (this *MasterThread) on_s2g_registe(pack *toogo.PacketReader, sessionId uint64) bool {
 	msg := proto.S2G_registe{}
 	msg.Read(pack)
+
+	this.LogInfo("s2g_registe %d", msg.Sid)
 
 	toogo.SetSessionTgid(sessionId, msg.Sid)
 	toogo.SetTgidSession(msg.Sid, sessionId)
