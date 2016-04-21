@@ -216,21 +216,6 @@ func (this *MasterThread) On_defaultNetMsg(msg_id uint16, pack *toogo.PacketRead
 				toogo.SendPacket(p)
 			}
 		}
-	case proto.S2C_chat_Id:
-		old_pos := pack.GetPos()
-		msg := proto.S2C_chat{}
-		msg.Read(pack)
-		dLen := pack.GetPos() - old_pos
-
-		clientSession := this.GetSession(pack.LinkTgid)
-		if clientSession != nil {
-			p := toogo.NewPacket(128, clientSession.SessionId)
-
-			if p != nil {
-				p.CopyFromPacketReader(pack, old_pos, dLen)
-				toogo.SendPacket(p)
-			}
-		}
 	}
 
 	return true
